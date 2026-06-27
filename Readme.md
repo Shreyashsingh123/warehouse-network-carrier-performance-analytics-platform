@@ -14,6 +14,9 @@ warehouse-network-carrier-performance-analytics-platform/
 │   └── sample/
 ├── sql/
 │   ├── schema/
+│           └── create_database.py
+│           └── create_schema.py
+│           └── db_connection.py
 │   └── analysis_queries/
 ├── pyspark/
 │   ├── extraction/

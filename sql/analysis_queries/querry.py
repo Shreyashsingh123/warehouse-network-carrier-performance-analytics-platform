@@ -44,3 +44,12 @@ class Querries:
             .count()
             .filter(col("count") > 3)
         )
+    def running_orders(self, final_df):
+        window_spec = Window.partitionBy("plant_code") \
+                            .orderBy("order_date") \
+                            .rowsBetween(Window.unboundedPreceding, 0)
+
+        return final_df.withColumn(
+            "running_order_count",
+            sum("order_id").over(window_spec)
+        )

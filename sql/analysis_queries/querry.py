@@ -81,3 +81,12 @@ class Querries:
             .groupBy("destination_port")
             .agg(count("order_id").alias("total_orders"))
         )
+    def warehouse_risk(self, final_df, warehouse_health):
+        window_spec = Window.partitionBy("product_id") \
+                            .orderBy(col("utilization_pct").desc())
+
+        return (
+            final_df
+            .join(warehouse_health, "plant_code")
+            .withColumn("risk_rank", rank().over(window_spec))
+        )

@@ -285,6 +285,7 @@ def load_to_postgres(
 ):
 
     conn = get_connection()
+    print(conn)
 
     try:
 

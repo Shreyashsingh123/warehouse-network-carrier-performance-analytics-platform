@@ -10,7 +10,7 @@ class Querries:
     def warehouses_above_90(self, warehouse_health):
         return warehouse_health.filter(col("utilization_pct") > 90)
 
-     def top_10_carriers(self, final_df):
+    def top_10_carriers(self, final_df):
         return (
             final_df
             .groupBy("carrier")
@@ -20,4 +20,10 @@ class Querries:
             )
             .orderBy(col("avg_transit_days").asc())
             .limit(10)
+        )
+    def order_volume_by_warehouse(self, final_df):
+        return (
+            final_df
+            .groupBy("plant_code")
+            .agg(count("order_id").alias("total_orders"))
         )

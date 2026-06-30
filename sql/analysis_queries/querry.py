@@ -27,3 +27,12 @@ class Querries:
             .groupBy("plant_code")
             .agg(count("order_id").alias("total_orders"))
         )
+
+    def rank_carriers(self, carrier_performance):
+        window_spec = Window.partitionBy("destination_port") \
+                            .orderBy("avg_transit_days")
+
+        return carrier_performance.withColumn(
+            "rank_by_speed",
+            rank().over(window_spec)
+        )

@@ -164,6 +164,32 @@ class LogisticsVisualization:
         plt.tight_layout()
         plt.show()
 
+     # 7. KPI Dashboard
+    def kpi_cards(self):
+
+        warehouses_above_90 = (
+            self.warehouse_health[
+                self.warehouse_health["utilization_pct"] > 90
+            ]["plant_code"].nunique()
+        )
+        fastest_carrier = (
+            self.carrier_performance
+            .sort_values("avg_transit_days")
+            .iloc[0]["carrier_id"]
+        )
+        at_risk_orders = (
+            self.fact_orders[
+                self.fact_orders["estimated_transit_days"] > 7
+            ].shape[0]
+        )
+        print("\n" + "=" * 50)
+        print("KPI DASHBOARD")
+        print("=" * 50)
+        print(f"Warehouses Above 90% Capacity : {warehouses_above_90}")
+        print(f"Fastest Carrier               : {fastest_carrier}")
+        print(f"At-Risk Orders                : {at_risk_orders}")
+        print("=" * 50)
+
 
 
 

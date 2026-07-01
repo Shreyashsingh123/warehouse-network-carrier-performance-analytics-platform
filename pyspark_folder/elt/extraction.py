@@ -1,5 +1,12 @@
 from pyspark.sql import SparkSession
-from config import *
+from .config import (
+    ORDER_LIST,
+    FREIGHT_RATES,
+    WH_CAPACITIES,
+    WH_COSTS,
+    PRODUCTS_PER_PLANT,
+    PLANT_PORTS
+)
 
 
 def create_spark():

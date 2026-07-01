@@ -1,4 +1,4 @@
-from config import CURATED_PATH
+from .config import CURATED_PATH
 
 
 def write_to_s3(

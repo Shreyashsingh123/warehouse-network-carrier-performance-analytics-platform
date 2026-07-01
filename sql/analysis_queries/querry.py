@@ -4,7 +4,7 @@ from pyspark.sql.window import Window
 
 class Querries:
 
-    def _init_(self, spark):
+    def __init__(self, spark):
         self.spark = spark
 
     def warehouses_above_90(self, warehouse_health):

@@ -1,9 +1,9 @@
-from extraction import create_spark, read_data, validate_data
-from transformation import transform_data
-from dimensions import create_dimension_tables
-from analytics import create_analytics_tables
-from loading import write_to_s3
-from db_loader import load_to_postgres
+from .extraction import create_spark, read_data, validate_data
+from .transformation import transform_data
+from .dimensions import create_dimension_tables
+from .analytics import create_analytics_tables
+from .loading import write_to_s3
+from .db_loader import load_to_postgres
 
 def main():
     spark = create_spark()

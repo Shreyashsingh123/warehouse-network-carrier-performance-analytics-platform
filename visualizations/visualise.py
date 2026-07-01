@@ -119,6 +119,24 @@ class LogisticsVisualization:
         plt.title("Order Distribution By Destination Port")
         plt.show()
 
+    # 5. Transit Days Histogram
+ 
+    def transit_days_histogram(self):
+
+        plt.figure(figsize=(10, 5))
+
+        sns.histplot(
+            self.fact_orders["estimated_transit_days"],
+            bins=15,
+            kde=True
+        )
+
+        plt.title("Distribution Of Transit Days")
+        plt.xlabel("Transit Days")
+
+        plt.tight_layout()
+        plt.show()
+
 
 
 
